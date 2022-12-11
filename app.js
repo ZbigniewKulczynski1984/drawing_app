@@ -6,11 +6,11 @@ const colorEl = document.getElementById('color');
 const clearEl = document.getElementById('clear');
 const ctx = canvas.getContext('2d');
 
-let size = 20;
+let size = 10;
 let color = 'black';
 let isPressed = false;
-let x
-let y
+let x;
+let y;
 
 canvas.addEventListener('mousedown', (e) => {
 	isPressed = true;
@@ -31,17 +31,17 @@ canvas.addEventListener('mouseup', (e) => {
 });
 
 canvas.addEventListener('mousemove', (e) => {
-    if(isPressed) {
-        const x2 = e.offsetX
-        const y2 = e.offsetY
+	if (isPressed) {
+		const x2 = e.offsetX;
+		const y2 = e.offsetY;
 
-        drawCircle(x2, y2)
-        drawLine(x, y, x2, y2)
+		drawCircle(x2, y2);
+		drawLine(x, y, x2, y2);
 
-        x = x2
-        y = y2
-    }
-})
+		x = x2;
+		y = y2;
+	}
+});
 
 function drawCircle(x, y) {
 	ctx.beginPath();
@@ -59,7 +59,21 @@ function drawLine(x1, y1, x2, y2) {
 	ctx.stroke();
 }
 
-colorEl.addEventListener('change', (e) => color = e.target.value)
+function updateSizeOnScreen() {
+    sizeEL.innerText = size
+}
+
+increaseBtn.addEventListener('click', () => {
+    size += 5
+
+    if(size > 50) {
+        size = 50
+    }
+
+    updateSizeOnScreen()
+})
+
+colorEl.addEventListener('change', (e) => (color = e.target.value));
 
 // drawCircle(100, 200)
 // drawLine(300, 300, 300, 500)
