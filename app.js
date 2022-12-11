@@ -3,6 +3,18 @@ const ctx = canvas.getContext('2d');
 
 let size = 20;
 let color = 'black'
+let isPressed = false
+let x
+let y
+
+canvas.addEventListener('mousedown', (e) => {
+    isPressed = true
+
+    x = e.offsetX
+    y = e.offsetY
+
+    console.log(isPressed, x, y)
+})
 
 function drawCircle(x, y) {
     ctx.beginPath();
@@ -20,5 +32,5 @@ function drawLine(x1, y1, x2, y2) {
     ctx.stroke()
 }
 
-drawCircle(100, 200)
-drawLine(300, 300, 300, 500)
+// drawCircle(100, 200)
+// drawLine(300, 300, 300, 500)
